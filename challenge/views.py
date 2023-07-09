@@ -48,12 +48,16 @@ def monthly_challenges_by_number(request, month):
 
 def display_tabular_month(request):
     all_month = list(challenges.keys())
-    listData = ''
-    for month in all_month:
-        capitalized_month = month.capitalize()
-        month_path = reverse('month_challenge', args=[month])
-        # Escape the "" (Double Quorts) through backslash
-        listData += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
+    # listData = ''
+    # for month in all_month:
+    #     capitalized_month = month.capitalize()
+    #     month_path = reverse('month_challenge', args=[month])
+    #     # Escape the "" (Double Quorts) through backslash
+    #     listData += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
 
-    complete_month = f"<ul>{listData}</ul>"
-    return HttpResponse(complete_month)
+    # complete_month = f"<ul>{listData}</ul>"
+    # return HttpResponse(complete_month)
+
+    return render(request, 'challenge/index.html', {
+        'all_month': all_month
+    })
