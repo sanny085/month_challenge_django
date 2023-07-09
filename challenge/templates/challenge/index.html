@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{month_name | title}} | Document</title>
+    <title>Document</title>
   </head>
   <body>
-    <h1>{{month_name | title}}</h1>
-    <p>{{value|add:'2'}}</p>
-
-    <p>{{description}}</p>
+    <h1>All Available Months</h1>
+    <ul>
+      {% for month in all_month %}
+      <li>{{month}}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

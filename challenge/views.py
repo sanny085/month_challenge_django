@@ -26,8 +26,12 @@ def monthly_challenges(request, month):
     try:
         # challenge_text = f"<h1>{challenges[month]}</h1>"
         # challenge_text = render_to_string('challenge/challenge.html')
-        return render(request, 'challenge/challenge.html')
-
+        # return HttpResponse(challenges[month])
+        return render(request, 'challenge/challenge.html', {
+            'month_name': month,
+            'description': challenges[month],
+            'value': 40,
+        })
     except:
         return HttpResponseNotFound('<h2>This month is not supported</h2>')
 
@@ -48,6 +52,7 @@ def display_tabular_month(request):
     for month in all_month:
         capitalized_month = month.capitalize()
         month_path = reverse('month_challenge', args=[month])
+        # Escape the "" (Double Quorts) through backslash
         listData += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
 
     complete_month = f"<ul>{listData}</ul>"
