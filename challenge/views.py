@@ -17,7 +17,7 @@ challenges = {
     "september": '9 Exercie is very important for us',
     "october": '10 Do not eat meat',
     "november": '11 Every day please walk 20 mins',
-    "december": '12 Exercie is very important for us',
+    "december": None,
 }
 
 

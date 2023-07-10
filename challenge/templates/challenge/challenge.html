@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{month_name | title}} | Document</title>
-  </head>
-  <body>
-    <h1>{{month_name | title}}</h1>
-    <p>{{value|add:'2'}}</p>
+{% extends 'base.html'%} {% block page_title %}{{month_name | title}} |
+Document{% endblock %} {% block content %}
+<h1>{{month_name | title}}</h1>
 
-    <p>{{description}}</p>
-  </body>
-</html>
+{% if description is not None %}
+<p>{{description}}</p>
+<p>{{value|add:'2'}}</p>
+{% else %}
+<p>There's no description for this month</p>
+{% endif %} {% endblock %}
