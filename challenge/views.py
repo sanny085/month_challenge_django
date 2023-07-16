@@ -1,22 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.template.loader import render_to_string
 # Create your views here.
 
 
 challenges = {
-    "january": '1 Do not eat meat',
-    "february": '2 Every day please walk 20 mins',
-    "march": '3 Exercie is very important for us',
-    "april": '4 Do not eat meat',
-    "may": '5 Every day please walk 20 mins',
-    "june": '6 Exercie is very important for us',
-    "july": '7 Do not eat meat',
-    "august": '8 Every day please walk 20 mins',
-    "september": '9 Exercie is very important for us',
-    "october": '10 Do not eat meat',
-    "november": '11 Every day please walk 20 mins',
+    "january": 'Start a daily gratitude journal to cultivate a positive mindset',
+    "february": 'Take up a new hobby or learn a musical instrument',
+    "march": 'Begin a fitness challenge or join a local sports team',
+    "april": 'Explore new recipes and try your hand at cooking or baking',
+    "may": 'Start a garden or create a mini herb garden on your windowsill',
+    "june": 'Take up photography and capture the beauty of nature around you',
+    "july": 'Plan a weekend getaway or a road trip to explore new places',
+    "august": 'Volunteer for a cause or organization that you are passionate about',
+    "september": 'Set aside time for self-care activities like meditation or yoga',
+    "october": 'Get creative with DIY crafts or decorations for Halloween',
+    "november": 'Start a novel writing challenge or participate in National Novel Writing Month (NaNoWriMo',
     "december": None,
 }
 
@@ -33,7 +33,11 @@ def monthly_challenges(request, month):
             'value': 40,
         })
     except:
-        return HttpResponseNotFound('<h2>This month is not supported</h2>')
+        # return HttpResponseNotFound('<h2>This month is not supported</h2>')
+
+        # response_data = render_to_string('404.html')
+        # return HttpResponseNotFound(response_data)
+        raise Http404()
 
 
 def monthly_challenges_by_number(request, month):

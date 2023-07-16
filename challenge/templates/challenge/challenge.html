@@ -1,10 +1,25 @@
-{% extends 'base.html'%} {% block page_title %}{{month_name | title}} |
-Document{% endblock %} {% block content %}
-<h1>{{month_name | title}}</h1>
+<!-- Current Month -->
 
+{% extends 'base.html'%}
+{% load static %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'challenge/challenge.css'%}">
+<link rel="stylesheet" href="{% static 'challenge/includes/header.css'%}">
+{% endblock %}
+
+{% block page_title %}{{month_name | title}} | Document{% endblock %}
+
+
+{% block content %}
+<!-- Header -->
+{% include "challenge/includes/header.html" with activate_page="Details Page" %}
+
+<h1>{{month_name | title}}</h1>
 {% if description is not None %}
-<p>{{description}}</p>
-<p>{{value|add:'2'}}</p>
+<h2>{{description}}</h2>
 {% else %}
-<p>There's no description for this month</p>
-{% endif %} {% endblock %}
+<p class="fallback">There's no description for this month</p>
+{% endif %}
+
+{% endblock %}

@@ -1,12 +1,20 @@
-{% extends 'base.html'%}
+<!-- All Months -->
 
-{% block page_title %}Months{% endblock %} 
-  
+{% extends 'base.html'%}
+{% load static %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'challenge/index.css'%}">
+{% endblock %}
+
+{% block page_title %}Months{% endblock %}
+
+
 {% block content %}
-    <h1>All Available Months</h1>
-    <ul>
-      {% for month in all_month %}
-      <li><a href="{% url 'month_challenge' month %}">{{month | title}}</li>
-      {% endfor %}
-    </ul>
+<!-- {% include "challenge/includes/header.html" with activate_page="Calender Page" %} -->
+<ul>
+  {% for month in all_month %}
+  <li><a href="{% url 'month_challenge' month %}">{{month | title}}</li>
+  {% endfor %}
+</ul>
 {% endblock %}
